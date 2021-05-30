@@ -16,35 +16,35 @@ fun main() {
 }
 
 fun reverse(x: Int): Int {
-    var flag = false;
+    var flag = false
     var num = x
-    try {
+    return try {
         if (x < 0) {
-            num = abs(x);
-            flag = true;
+            num = abs(x)
+            flag = true
         }
         var str = num.toString().reversed()
         if (flag) {
-            str = "-" + str
+            str = "-$str"
         }
-        return str.toInt()
+        str.toInt()
     } catch (e: Exception) {
-        return 0
+        0
     }
 }
 
 fun reverse2(x: Int): Int {
-    try {
+    return try {
         val res = if (x < 0) StringBuilder((-x).toString()).append("-").reverse().toString()
-            else StringBuilder(x.toString()).reverse().toString()
-        return res.toInt()
+        else StringBuilder(x.toString()).reverse().toString()
+        res.toInt()
     } catch(e: Exception) {
-        return 0;
+        0
     }
 }
 
 fun reverse3(x: Int): Int {
-    val nFlag = x < 0;
+    val nFlag = x < 0
     var num = x.takeIf { !nFlag } ?: -x
     var prevRevNum = 0
     var revNum = 0

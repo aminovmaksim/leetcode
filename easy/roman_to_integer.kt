@@ -4,13 +4,13 @@
 fun romanToInt(s: String): Int {
     var sum = 0
     var prevNum = 0
-    var map = hashMapOf('I' to 1, 'V' to 5, 'X' to 10, 'L' to 50, 'C' to 100, 'D' to 500, 'M' to 1000)
+    val map = hashMapOf('I' to 1, 'V' to 5, 'X' to 10, 'L' to 50, 'C' to 100, 'D' to 500, 'M' to 1000)
     for (c in s.toCharArray()) {
-        val value = map.get(c) ?: 0
-        if (prevNum < value)
-            sum += value - prevNum * 2
+        val value = map[c] ?: 0
+        sum += if (prevNum < value)
+            value - prevNum * 2
         else
-            sum += value
+            value
         prevNum = value
     }
     return sum
